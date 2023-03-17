@@ -1,0 +1,17 @@
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\bin\Debug\net6.0\Phonebook.Core.Domain.deps.json
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\bin\Debug\net6.0\Phonebook.Core.Domain.dll
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\bin\Debug\net6.0\Phonebook.Core.Domain.pdb
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\bin\Debug\net6.0\Phonebook.Framework.dll
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\bin\Debug\net6.0\Phonebook.Framework.pdb
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\Phonebook.Core.Domain.csproj.AssemblyReference.cache
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\Phonebook.Core.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\Phonebook.Core.Domain.AssemblyInfoInputs.cache
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\Phonebook.Core.Domain.AssemblyInfo.cs
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\Phonebook.Core.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\Phonebook.Core.Domain.csproj.CopyComplete
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\Phonebook.Core.Domain.dll
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\refint\Phonebook.Core.Domain.dll
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\Phonebook.Core.Domain.pdb
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\ref\Phonebook.Core.Domain.dll
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\bin\Debug\net6.0\Phonebook.Core.Domain.runtimeconfig.json
+C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Core\obj\Debug\net6.0\Phonebook.Core.Domain.genruntimeconfig.cache
