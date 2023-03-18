@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Phonebook.Core.Domain.Contacts;
 using Phonebook.Core.Domain.Models;
 using Phonebook.Framework.Extentions;
 using Phonebook.Infra.Data.Sql.Common;
@@ -11,7 +12,7 @@ namespace PhoneBook.Controllers
     public class ContactsController : ControllerBase
     {
         private readonly PhonebookDbContext _phonebookDbContext;
-        efContactsRepository _efContactRepository;
+        IContactsRepository _efContactRepository;
         public ContactsController(PhonebookDbContext phonebookDbContext)
         {
             _phonebookDbContext = phonebookDbContext;

@@ -1,7 +1,0 @@
-C:\Users\Amir\Desktop\Phonebook\Phonebook\PhonebookApi\obj\Debug\net6.0\PhonebookApi.csproj.AssemblyReference.cache
-C:\Users\Amir\Desktop\Phonebook\Phonebook\PhonebookApi\obj\Debug\net6.0\PhonebookApi.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Amir\Desktop\Phonebook\Phonebook\PhonebookApi\obj\Debug\net6.0\PhonebookApi.AssemblyInfoInputs.cache
-C:\Users\Amir\Desktop\Phonebook\Phonebook\PhonebookApi\obj\Debug\net6.0\PhonebookApi.AssemblyInfo.cs
-C:\Users\Amir\Desktop\Phonebook\Phonebook\PhonebookApi\obj\Debug\net6.0\PhonebookApi.csproj.CoreCompileInputs.cache
-C:\Users\Amir\Desktop\Phonebook\Phonebook\PhonebookApi\obj\Debug\net6.0\PhonebookApi.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Amir\Desktop\Phonebook\Phonebook\PhonebookApi\obj\Debug\net6.0\PhonebookApi.MvcApplicationPartsAssemblyInfo.cache

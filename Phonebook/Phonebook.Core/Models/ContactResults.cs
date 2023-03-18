@@ -4,6 +4,7 @@ namespace Phonebook.Core.Domain.Models
 {
     public class ContactResults
     {
+        public long Id { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Notes { get; set; }

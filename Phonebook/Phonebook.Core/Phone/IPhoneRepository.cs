@@ -10,5 +10,6 @@ namespace Phonebook.Core.Domain.Phone
         Result RemoveUserPhonees(long UserId);
         Result RemovePhone(long Id);
         Result UpdatePhone(long Id, PhoneVM phone);
+        List<PhoneVM> GetPhones();
     }
 }

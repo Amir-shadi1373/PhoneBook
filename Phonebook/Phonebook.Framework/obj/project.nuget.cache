@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ibnv7u/s2oo7Mutrh+zKcfG+dIZEx2W/ahEhCFYsE/Au6rGV8uqVtW8X/HZgTFvsxObDGtArOZVr8ckEyyI7LA==",
+  "dgSpecHash": "1PK+jExmMLs94FfZuMnaSYUS1nWOlXjeCx2u22vHyH+VeI1svSwrOAHTEbg8d+tO5tp2fx+TYhb66bKVFTZVkw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Amir\\Desktop\\Phonebook\\Phonebook\\Phonebook.Framework\\Phonebook.Framework.csproj",
+  "projectFilePath": "K:\\Projects\\PhoneBook\\Phonebook\\Phonebook.Framework\\Phonebook.Framework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Amir\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Amir\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",

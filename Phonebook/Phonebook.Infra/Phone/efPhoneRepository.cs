@@ -9,19 +9,21 @@ namespace Phonebook.Infra.Data.Sql.Phone
     public class efPhoneRepository : IPhoneRepository
     {
         private readonly PhonebookDbContext _phonebookDbContext;
-        Core.Domain.Phone.Phone? _Phone;
-        Result result = new Result();
-        PhoneVM? _phoneVM;
-        List<PhoneVM>? li;
         public efPhoneRepository(PhonebookDbContext phonebookDbContext)
         {
             _phonebookDbContext = phonebookDbContext;
         }
+        /// <summary>
+        /// افزودن یک شماره 
+        /// </summary>
+        /// <param name="phone">شماره تلفن/موبایل</param>
+        /// <returns></returns>
         public Result AddPhone(PhoneVM phone)
         {
+                Core.Domain.Phone.Phone _Phone = new Core.Domain.Phone.Phone();
+            Result result = new Result();
             try
             {
-                _Phone = new Core.Domain.Phone.Phone();
                 _Phone.PhoneNumber = phone.PhoneNumber;
                 _Phone.UserId = phone.UserId;
 
@@ -39,18 +41,22 @@ namespace Phonebook.Infra.Data.Sql.Phone
                 return result;
             }
         }
-
+        /// <summary>
+        /// فراخوانی شماره های مربوط به یک مخاطب
+        /// </summary>
+        /// <param name="UserId">آیدی مخاطب مورد نظر</param>
+        /// <returns></returns>
         public List<PhoneVM> GetPhone(long UserId)
         {
+                   List<PhoneVM> li = new List<PhoneVM>();
             try
             {
                 List<Core.Domain.Phone.Phone> phones = _phonebookDbContext.tbl_Phone.Where(a => a.UserId == UserId).ToList();
                 if (phones != null)
                 {
-                    li = new List<PhoneVM>();
                     foreach (var item in phones)
                     {
-                        _phoneVM = new PhoneVM();
+                        PhoneVM _phoneVM = new PhoneVM();
                         _phoneVM.PhoneNumber = item.PhoneNumber;
                         _phoneVM.UserId = item.UserId;
                         _phoneVM.Id = item.Id;
@@ -58,26 +64,28 @@ namespace Phonebook.Infra.Data.Sql.Phone
                     }
                     return li;
                 }
-                _phoneVM = new PhoneVM();
                 return li;
             }
             catch
             {
-                _phoneVM = new PhoneVM();
                 return li;
             }
         }
+        /// <summary>
+        /// فراخوانی همه شماره های موجود
+        /// </summary>
+        /// <returns></returns>
         public List<PhoneVM> GetPhones()
         {
+                   List<PhoneVM> li = new List<PhoneVM>();
             try
             {
                 List<Core.Domain.Phone.Phone> phones = _phonebookDbContext.tbl_Phone.ToList();
                 if (phones != null)
                 {
-                    li = new List<PhoneVM>();
                     foreach (var item in phones)
                     {
-                        _phoneVM = new PhoneVM();
+                        PhoneVM _phoneVM = new PhoneVM();
                         _phoneVM.PhoneNumber = item.PhoneNumber;
                         _phoneVM.UserId = item.UserId;
                         _phoneVM.Id = item.Id;
@@ -85,18 +93,21 @@ namespace Phonebook.Infra.Data.Sql.Phone
                     }
                     return li;
                 }
-                _phoneVM = new PhoneVM();
                 return li;
             }
             catch
             {
-                _phoneVM = new PhoneVM();
                 return li;
             }
         }
-
+        /// <summary>
+        /// حذف یک شماره
+        /// </summary>
+        /// <param name="Id">آیدی</param>
+        /// <returns></returns>
         public Result RemovePhone(long Id)
         {
+            Result result = new Result();
             try
             {
                 var phones = _phonebookDbContext.tbl_Phone.Where(a => a.Id == Id).SingleOrDefault();
@@ -119,9 +130,14 @@ namespace Phonebook.Infra.Data.Sql.Phone
                 return result;
             }
         }
-
+        /// <summary>
+        /// حذف تمامی شماره های یک مخاطب
+        /// </summary>
+        /// <param name="UserId">آیدی مخاطب</param>
+        /// <returns></returns>
         public Result RemoveUserPhonees(long UserId)
         {
+            Result result = new Result();
             try
             {
                 List<Core.Domain.Phone.Phone>? phones = _phonebookDbContext.tbl_Phone.Where(a => a.UserId == UserId).ToList();
@@ -144,9 +160,15 @@ namespace Phonebook.Infra.Data.Sql.Phone
                 return result;
             }
         }
-
+        /// <summary>
+        /// ویرایش یک شماره 
+        /// </summary>
+        /// <param name="Id">آیدی شماره</param>
+        /// <param name="phone">شماره تلفن</param>
+        /// <returns></returns>
         public Result UpdatePhone(long Id, PhoneVM phone)
         {
+            Result result = new Result();
             try
             {
                 Core.Domain.Phone.Phone? phonees = _phonebookDbContext.tbl_Phone.Where(a => a.Id == Id).SingleOrDefault();

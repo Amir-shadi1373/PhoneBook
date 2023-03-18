@@ -7,6 +7,7 @@ namespace Phonebook.Core.Domain.Email_Address
     {
         Result AddEmail(EmailVM email);
         List<EmailVM> GetEmail(long UserId);
+        List<EmailVM> GetEmailes();
         Result RemoveUserEmailes(long UserId);
         Result RemoveEmail(long Id);
         Result UpdateEmail(long Id, EmailVM email);

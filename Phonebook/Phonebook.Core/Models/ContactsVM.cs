@@ -7,7 +7,7 @@ namespace Phonebook.Core.Domain.Models
         [Required]
         public PersonVM PersonDetails { get; set; }
         [Required]
-        public List<PhoneVM> PhoneList { get; set; }
+        public List<PhoneVM> phoneNumberList { get; set; }
         public List<AddressVM>? AddressList { get; set; }
         public List<EmailVM>? EmailList { get; set; }
         public List<SignificantDateVM>? SignificantDateList { get; set; }

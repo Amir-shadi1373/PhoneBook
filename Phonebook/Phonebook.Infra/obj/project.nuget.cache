@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3cCwVYKPmVmNcEE+t5RVzg3YrQKYBh/u6Wt3F+XCrheUUNH+ehl/AAVT+UtrfgFTcD02ju3NavTH+WErfcW0Fw==",
+  "dgSpecHash": "e72TBhg46WrFyPg5wTB3XQ29Hsl9epJAoptKP+4aj3R9aJccKNx0ahsP+KWmojt8S1UhNNNbryTe+4h5QPwZ4g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Amir\\Desktop\\Phonebook\\Phonebook\\Phonebook.Infra\\Phonebook.Infra.Data.Sql.csproj",
+  "projectFilePath": "K:\\Projects\\PhoneBook\\Phonebook\\Phonebook.Infra\\Phonebook.Infra.Data.Sql.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Amir\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Amir\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

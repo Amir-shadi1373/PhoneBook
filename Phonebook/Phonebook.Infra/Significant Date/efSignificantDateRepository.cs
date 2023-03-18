@@ -9,19 +9,21 @@ namespace Phonebook.Infra.Data.Sql.Significant_Date
     public class efSignificantDateRepository: ISignificantDateRepository
     {
         private readonly PhonebookDbContext _phonebookDbContext;
-        Core.Domain.SignificantDate.SignificantDate? _SignificantDate;
-        Result result = new Result();
-        SignificantDateVM? _significantDateVM;
-        List<SignificantDateVM>? li;
         public efSignificantDateRepository(PhonebookDbContext significantDatebookDbContext)
         {
             _phonebookDbContext = significantDatebookDbContext;
         }
+        /// <summary>
+        /// افزودن تاریح مناسبت خاص
+        /// </summary>
+        /// <param name="significantDate">تاریخ روز خاص و آیدی مخاطب</param>
+        /// <returns></returns>
         public Result AddSignificantDate(SignificantDateVM significantDate)
         {
             try
             {
-                _SignificantDate = new Core.Domain.SignificantDate.SignificantDate();
+                Core.Domain.SignificantDate.SignificantDate _SignificantDate = new Core.Domain.SignificantDate.SignificantDate();
+                Result result = new Result();
                 _SignificantDate.Date = significantDate.Date;
                 _SignificantDate.UserId = significantDate.UserId;
 
@@ -34,23 +36,29 @@ namespace Phonebook.Infra.Data.Sql.Significant_Date
             }
             catch (Exception ex)
             {
+                Result result = new Result();
                 result.ResultStatus = false;
                 result.ResultMessage = ex.Message;
                 return result;
             }
         }
-
+        /// <summary>
+        /// لیستی از روز های خاص مخاطب مورد نظر
+        /// </summary>
+        /// <param name="UserId">آیدی مخاطب</param>
+        /// <returns></returns>
         public List<SignificantDateVM> GetSignificantDate(long UserId)
         {
+            List<SignificantDateVM> li = new List<SignificantDateVM>();
             try
             {
                 List<Core.Domain.SignificantDate.SignificantDate> significantDates = _phonebookDbContext.tbl_SignificantDate.Where(a => a.UserId == UserId).ToList();
+                    
                 if (significantDates != null)
                 {
-                    li = new List<SignificantDateVM>();
                     foreach (var item in significantDates)
                     {
-                        _significantDateVM = new SignificantDateVM();
+                        SignificantDateVM _significantDateVM = new SignificantDateVM();
                         _significantDateVM.Date = item.Date;
                         _significantDateVM.UserId = item.UserId;
                         _significantDateVM.Id = item.Id;
@@ -58,26 +66,28 @@ namespace Phonebook.Infra.Data.Sql.Significant_Date
                     }
                     return li;
                 }
-                _significantDateVM = new SignificantDateVM();
                 return li;
             }
             catch
             {
-                _significantDateVM = new SignificantDateVM();
                 return li;
             }
         }
+        /// <summary>
+        /// لیست روز های خاص تمام مخاطبین
+        /// </summary>
+        /// <returns></returns>
         public List<SignificantDateVM> GetSignificantDates()
         {
+                    List<SignificantDateVM> li = new List<SignificantDateVM>();
             try
             {
                 List<Core.Domain.SignificantDate.SignificantDate> significantDates = _phonebookDbContext.tbl_SignificantDate.ToList();
                 if (significantDates != null)
                 {
-                    li = new List<SignificantDateVM>();
                     foreach (var item in significantDates)
                     {
-                        _significantDateVM = new SignificantDateVM();
+                        SignificantDateVM _significantDateVM = new SignificantDateVM();
                         _significantDateVM.Date = item.Date;
                         _significantDateVM.UserId = item.UserId;
                         _significantDateVM.Id = item.Id;
@@ -85,18 +95,21 @@ namespace Phonebook.Infra.Data.Sql.Significant_Date
                     }
                     return li;
                 }
-                _significantDateVM = new SignificantDateVM();
                 return li;
             }
             catch
             {
-                _significantDateVM = new SignificantDateVM();
                 return li;
             }
         }
-
+        /// <summary>
+        /// متد حذف یک تاریخ خاص
+        /// </summary>
+        /// <param name="Id">آیدی مخاطب</param>
+        /// <returns></returns>
         public Result RemoveSignificantDate(long Id)
         {
+                Result result = new Result();
             try
             {
                 var significantDates = _phonebookDbContext.tbl_SignificantDate.Where(a => a.Id == Id).SingleOrDefault();
@@ -119,9 +132,14 @@ namespace Phonebook.Infra.Data.Sql.Significant_Date
                 return result;
             }
         }
-
+        /// <summary>
+        /// متد حذف همه روز های خاص تمام مخاطبین
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
         public Result RemoveUserSignificantDates(long UserId)
         {
+            Result result = new Result();
             try
             {
                 List<Core.Domain.SignificantDate.SignificantDate>? significantDates = _phonebookDbContext.tbl_SignificantDate.Where(a => a.UserId == UserId).ToList();
@@ -144,9 +162,15 @@ namespace Phonebook.Infra.Data.Sql.Significant_Date
                 return result;
             }
         }
-
+        /// <summary>
+        /// بروز رسانی روزهای خاص یک مخاطب
+        /// </summary>
+        /// <param name="Id">آیدی مخاطب</param>
+        /// <param name="significantDate">تاریخ روز خاص و آیدی مخاطب</param>
+        /// <returns></returns>
         public Result UpdateSignificantDate(long Id, SignificantDateVM significantDate)
         {
+            Result result = new Result();
             try
             {
                 Core.Domain.SignificantDate.SignificantDate? significantDates = _phonebookDbContext.tbl_SignificantDate.Where(a => a.Id == Id).SingleOrDefault();

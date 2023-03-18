@@ -8,7 +8,13 @@ namespace Phonebook.Framework.Extentions
 {
     public class Result
     {
+        /// <summary>
+        /// متن خطا/تایید
+        /// </summary>
         public string ResultMessage { get; set; }
+        /// <summary>
+        /// وضعیت تسک انجام شده/نشده
+        /// </summary>
         public bool ResultStatus { get; set; }
     }
 }

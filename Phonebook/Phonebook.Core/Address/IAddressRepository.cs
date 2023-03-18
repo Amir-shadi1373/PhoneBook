@@ -8,6 +8,7 @@ namespace Phonebook.Core.Domain.Address
     {
         Result AddAddress(AddressVM address);
         List<AddressVM> GetAddress(long UserId);
+        List<AddressVM> GetAddresses();
         Result RemoveUserAddresses(long UserId);
         Result RemoveAddress(long Id);
         Result UpdateAddress(long Id, AddressVM address);

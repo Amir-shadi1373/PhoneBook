@@ -1,8 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Phonebook.Core.Domain.Address;
 using Phonebook.Core.Domain.Contacts;
+using Phonebook.Core.Domain.Email_Address;
 using Phonebook.Core.Domain.Models;
 using Phonebook.Core.Domain.Person;
+using Phonebook.Core.Domain.Phone;
+using Phonebook.Core.Domain.Significant_Date;
 using Phonebook.Core.Domain.SignificantDate;
 using Phonebook.Framework.Extentions;
 using Phonebook.Infra.Data.Sql.Address;
@@ -19,12 +23,11 @@ namespace Phonebook.Infra.Data.Sql.Contacts
     public class efContactsRepository : IContactsRepository
     {
         private readonly PhonebookDbContext _phonebookDbContext;
-        Result result = new Result();
-        efPersonRepository person;
-        efPhoneRepository phone;
-        efAddressRepository address;
-        efEmailRepository email;
-        efSignificantDateRepository sdr;
+        IPersonRepository person;
+        IPhoneRepository phone;
+        IAddressRepository address;
+        IEmailRepository email;
+        ISignificantDateRepository sdr;
         public efContactsRepository(PhonebookDbContext phonebookDbContext)
         {
             _phonebookDbContext = phonebookDbContext;
@@ -34,14 +37,20 @@ namespace Phonebook.Infra.Data.Sql.Contacts
             email = new efEmailRepository(_phonebookDbContext);
             sdr = new efSignificantDateRepository(_phonebookDbContext);
         }
+        /// <summary>
+        /// افزودن یک مخاطب
+        /// </summary>
+        /// <param name="inputs">همه اطلاعات مورد نیاز برای درج یک مخاطب</param>
+        /// <returns></returns>
         public Result AddContact(ContactsVM inputs)
         {
+            Result result = new Result();
             using (var transaction = _phonebookDbContext.Database.BeginTransaction())
             {
                 try
                 {
                     long pId = person.AddPerson(inputs.PersonDetails);
-                    foreach (var item in inputs.PhoneList)
+                    foreach (var item in inputs.phoneNumberList)
                     {
                         item.UserId = pId;
                         phone.AddPhone(item);
@@ -71,17 +80,17 @@ namespace Phonebook.Infra.Data.Sql.Contacts
                         }
                     }
 
+                    result.ResultStatus = true;
+                    result.ResultMessage = "Contact Inserted!!!";
                     if (result.ResultStatus == true)
                         transaction.Commit();
                     else
                     {
                         transaction.Rollback();
-                    result.ResultStatus = false;
-                    result.ResultMessage = "Error!";
-                    return result;
+                        result.ResultStatus = false;
+                        result.ResultMessage = "Error!";
+                        return result;
                     }
-                    result.ResultStatus = true;
-                    result.ResultMessage = "Contact Inserted!!!";
                     return result;
                 }
                 catch (Exception ex)
@@ -93,14 +102,18 @@ namespace Phonebook.Infra.Data.Sql.Contacts
                 }
             }
         }
-
+        /// <summary>
+        /// فراخوانی یک مخاطب
+        /// </summary>
+        /// <param name="Id">آیدی مخاطب</param>
+        /// <returns></returns>
         public ContactsVM GetContact(long Id)
         {
             try
             {
                 ContactsVM _contactsVM = new ContactsVM();
                 _contactsVM.PersonDetails = person.GetPerson(Id);
-                _contactsVM.PhoneList = phone.GetPhone(Id);
+                _contactsVM.phoneNumberList = phone.GetPhone(Id);
                 _contactsVM.AddressList = address.GetAddress(Id);
                 _contactsVM.SignificantDateList = sdr.GetSignificantDate(Id);
                 _contactsVM.EmailList = email.GetEmail(Id);
@@ -112,14 +125,17 @@ namespace Phonebook.Infra.Data.Sql.Contacts
                 return _contactsVM;
             }
         }
-
+        /// <summary>
+        /// فراخوانی همه مخاطبین
+        /// </summary>
+        /// <returns></returns>
         public List<ContactResults> GetContacts()
         {
             ContactLists _contacts = new ContactLists();
             List<ContactResults> _contactsresultList = new List<ContactResults>();
             ContactResults _contactsresult;
             _contacts.PersonDetailsList = person.GetAllPerson();
-            _contacts.PhoneList = phone.GetPhones();
+            _contacts.phoneNumberList = phone.GetPhones();
             _contacts.AddressList = address.GetAddresses();
             _contacts.SignificantDateList = sdr.GetSignificantDates();
             _contacts.EmailList = email.GetEmailes();
@@ -127,12 +143,13 @@ namespace Phonebook.Infra.Data.Sql.Contacts
             {
                 _contactsresult = new ContactResults
                 {
+                    Id = item.Id,
                     FirstName = item.FirstName,
                     LastName = item.LastName,
                     NikName = item.NikName,
                     Company = item.Company,
                     Notes = item.Notes,
-                    PhoneNumberList = _contacts.PhoneList != null ? _contacts.PhoneList.Where(a => a.UserId == item.Id).ToList() : null,
+                    PhoneNumberList = _contacts.phoneNumberList != null ? _contacts.phoneNumberList.Where(a => a.UserId == item.Id).ToList() : null,
                     addressList = _contacts.AddressList != null ? _contacts.AddressList.Where(a => a.UserId == item.Id).ToList() : null,
                     EmailValueList = _contacts.EmailList != null ? _contacts.EmailList.Where(a => a.UserId == item.Id).ToList() : null,
                     significantDateList = _contacts.SignificantDateList != null ? _contacts.SignificantDateList.Where(a => a.UserId == item.Id).ToList() : null
@@ -141,9 +158,14 @@ namespace Phonebook.Infra.Data.Sql.Contacts
             }
             return _contactsresultList;
         }
-
+        /// <summary>
+        /// حذف مخاطب
+        /// </summary>
+        /// <param name="Id">آیدی مخاطب</param>
+        /// <returns></returns>
         public Result RemoveContact(long Id)
         {
+            Result result = new Result();
             using (var transaction = _phonebookDbContext.Database.BeginTransaction())
             {
                 try
@@ -159,9 +181,9 @@ namespace Phonebook.Infra.Data.Sql.Contacts
                     }
                     if (result.ResultStatus == true)
                     {
-                        if (res.PhoneList != null)
+                        if (res.phoneNumberList != null)
                         {
-                            result=phone.RemoveUserPhonees(Id);
+                            result = phone.RemoveUserPhonees(Id);
                         }
                         else
                         {
@@ -174,7 +196,7 @@ namespace Phonebook.Infra.Data.Sql.Contacts
                     {
                         if (res.AddressList != null)
                         {
-                            result=address.RemoveUserAddresses(Id);
+                            result = address.RemoveUserAddresses(Id);
                         }
                         else
                         {
@@ -187,7 +209,7 @@ namespace Phonebook.Infra.Data.Sql.Contacts
                     {
                         if (res.EmailList != null)
                         {
-                            result=email.RemoveUserEmailes(Id);
+                            result = email.RemoveUserEmailes(Id);
                         }
                         else
                         {
@@ -200,7 +222,7 @@ namespace Phonebook.Infra.Data.Sql.Contacts
                     {
                         if (res.SignificantDateList != null)
                         {
-                            result=sdr.RemoveUserSignificantDates(Id);
+                            result = sdr.RemoveUserSignificantDates(Id);
                         }
                         else
                         {
@@ -231,9 +253,15 @@ namespace Phonebook.Infra.Data.Sql.Contacts
                 }
             }
         }
-
+        /// <summary>
+        /// ویرایش اطلاعات یک مخاطب
+        /// </summary>
+        /// <param name="Id">آیدی مخاطب</param>
+        /// <param name="inputs">اطلاعات ویرایش شده</param>
+        /// <returns></returns>
         public Result UpdateContact(long Id, ContactsVM inputs)
         {
+            Result result = new Result();
             using (var transaction = _phonebookDbContext.Database.BeginTransaction())
             {
                 try
@@ -249,9 +277,9 @@ namespace Phonebook.Infra.Data.Sql.Contacts
                     }
                     if (result.ResultStatus == true)
                     {
-                        if (res.PhoneList != null)
+                        if (res.phoneNumberList != null)
                         {
-                            foreach (var item in inputs.PhoneList)
+                            foreach (var item in inputs.phoneNumberList)
                                 result = phone.UpdatePhone(item.Id, item);
                         }
                         else

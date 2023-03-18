@@ -12,18 +12,12 @@ namespace PhoneBook.Controllers
     public class PersonsController : ControllerBase
     {
         private readonly PhonebookDbContext _phonebookDbContext;
-        efPersonRepository efPersonRepository;
+        IPersonRepository efPersonRepository;
         public PersonsController(PhonebookDbContext phonebookDbContext)
         {
             _phonebookDbContext = phonebookDbContext;
             efPersonRepository = new efPersonRepository(_phonebookDbContext);
         }
-        //[HttpPost]
-        //public bool Post(PersonVM person)
-        //{
-        //    efPersonRepository.AddPerson(person);
-        //    return true;
-        //}
         [HttpGet]
         public ActionResult<List<PersonVM>> Get()
         {
@@ -42,17 +36,5 @@ namespace PhoneBook.Controllers
             else
                 return NotFound();
         }
-        //[HttpPut("Id")]
-        //public Result Put(long Id, PersonVM person)
-        //{
-        //    var result = efPersonRepository.UpdatePerson(Id, person);
-        //    return result;
-        //}
-        //[HttpDelete("Id")]
-        //public Result Delete(long Id)
-        //{
-        //    var result = efPersonRepository.RemovePerson(Id);
-        //    return result;
-        //}
     }
 }

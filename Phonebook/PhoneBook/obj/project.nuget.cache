@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i5SuX2A1tenT+mgJOsTFlheeWiKz5YhPDFaFdreCTJlzW0rZt9N0qyWkQfTk9ZEWnzyaYXkmrBgys0OGLK6rFA==",
+  "dgSpecHash": "cX4BQhCEYbDIJDFZxuih1e8et8tgpzW70n+jyxGdPXvsV35Cjkfbq1O/BoNmQs8V9NcxVLVHsV6dxtPQWhe75w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Amir\\Desktop\\Phonebook\\Phonebook\\PhoneBook\\PhoneBook.csproj",
+  "projectFilePath": "K:\\Projects\\PhoneBook\\Phonebook\\PhoneBook\\PhoneBook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Amir\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Amir\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

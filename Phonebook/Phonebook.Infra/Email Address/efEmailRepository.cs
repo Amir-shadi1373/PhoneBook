@@ -9,19 +9,21 @@ namespace Phonebook.Infra.Data.Sql.Email_Address
     public class efEmailRepository : IEmailRepository
     {
         private readonly PhonebookDbContext _phonebookDbContext;
-        Core.Domain.EmailAddress.Email? _Email;
-        Result result = new Result();
-        EmailVM? _emailVM;
-        List<EmailVM>? li;
         public efEmailRepository(PhonebookDbContext phonebookDbContext)
         {
             _phonebookDbContext = phonebookDbContext;
         }
+        /// <summary>
+        /// افزودن ایمیل
+        /// </summary>
+        /// <param name="email">ایمیل</param>
+        /// <returns></returns>
         public Result AddEmail(EmailVM email)
         {
+            Result result = new Result();
             try
             {
-                _Email = new Core.Domain.EmailAddress.Email();
+                Core.Domain.EmailAddress.Email _Email = new Core.Domain.EmailAddress.Email();
                 _Email.Value = email.Value;
                 _Email.UserId = email.UserId;
 
@@ -39,18 +41,22 @@ namespace Phonebook.Infra.Data.Sql.Email_Address
                 return result;
             }
         }
-
+        /// <summary>
+        /// فراخوانی ایمیل
+        /// </summary>
+        /// <param name="UserId">آیدی کاربر</param>
+        /// <returns></returns>
         public List<EmailVM> GetEmail(long UserId)
         {
+            List<EmailVM> li = new List<EmailVM>();
             try
             {
                 List<Core.Domain.EmailAddress.Email> emails = _phonebookDbContext.tbl_Email.Where(a => a.UserId == UserId).ToList();
                 if (emails != null)
                 {
-                    li = new List<EmailVM>();
                     foreach (var item in emails)
                     {
-                        _emailVM = new EmailVM();
+                        EmailVM _emailVM = new EmailVM();
                         _emailVM.Value = item.Value;
                         _emailVM.UserId = item.UserId;
                         _emailVM.Id = item.Id;
@@ -58,26 +64,28 @@ namespace Phonebook.Infra.Data.Sql.Email_Address
                     }
                     return li;
                 }
-                _emailVM = new EmailVM();
                 return li;
             }
             catch
             {
-                _emailVM = new EmailVM();
                 return li;
             }
         }
+        /// <summary>
+        /// فراخوانی همه ایمیل های یک مخاطب
+        /// </summary>
+        /// <returns></returns>
         public List<EmailVM> GetEmailes()
         {
+            List<EmailVM> li = new List<EmailVM>();
             try
             {
                 List<Core.Domain.EmailAddress.Email> emails = _phonebookDbContext.tbl_Email.ToList();
                 if (emails != null)
                 {
-                    li = new List<EmailVM>();
                     foreach (var item in emails)
                     {
-                        _emailVM = new EmailVM();
+                        EmailVM _emailVM = new EmailVM();
                         _emailVM.Value = item.Value;
                         _emailVM.UserId = item.UserId;
                         _emailVM.Id = item.Id;
@@ -85,18 +93,21 @@ namespace Phonebook.Infra.Data.Sql.Email_Address
                     }
                     return li;
                 }
-                _emailVM = new EmailVM();
                 return li;
             }
             catch
             {
-                _emailVM = new EmailVM();
                 return li;
             }
         }
-
+        /// <summary>
+        /// حذف یک ایمیل
+        /// </summary>
+        /// <param name="Id">آیدی ایمیل</param>
+        /// <returns></returns>
         public Result RemoveEmail(long Id)
         {
+            Result result = new Result();
             try
             {
                 var emails = _phonebookDbContext.tbl_Email.Where(a => a.Id == Id).SingleOrDefault();
@@ -119,9 +130,14 @@ namespace Phonebook.Infra.Data.Sql.Email_Address
                 return result;
             }
         }
-
+        /// <summary>
+        /// حذف ایمیل های یک کاربر
+        /// </summary>
+        /// <param name="UserId">آیدی مخاطب</param>
+        /// <returns></returns>
         public Result RemoveUserEmailes(long UserId)
         {
+            Result result = new Result();
             try
             {
                 List<Core.Domain.EmailAddress.Email>? emailes = _phonebookDbContext.tbl_Email.Where(a => a.UserId == UserId).ToList();
@@ -144,9 +160,15 @@ namespace Phonebook.Infra.Data.Sql.Email_Address
                 return result;
             }
         }
-
+        /// <summary>
+        /// ویرایش ایمیل
+        /// </summary>
+        /// <param name="Id">آیدی</param>
+        /// <param name="email">ایمیل</param>
+        /// <returns></returns>
         public Result UpdateEmail(long Id, EmailVM email)
         {
+            Result result = new Result();
             try
             {
                 Core.Domain.EmailAddress.Email? emailes = _phonebookDbContext.tbl_Email.Where(a => a.Id == Id).SingleOrDefault();

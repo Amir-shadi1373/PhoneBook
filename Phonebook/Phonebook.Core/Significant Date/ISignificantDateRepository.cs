@@ -7,6 +7,7 @@ namespace Phonebook.Core.Domain.Significant_Date
     {
         Result AddSignificantDate(SignificantDateVM significantDate);
         List<SignificantDateVM> GetSignificantDate(long UserId);
+        List<SignificantDateVM> GetSignificantDates();
         Result RemoveUserSignificantDates(long UserId);
         Result RemoveSignificantDate(long Id);
         Result UpdateSignificantDate(long Id, SignificantDateVM significantDate);

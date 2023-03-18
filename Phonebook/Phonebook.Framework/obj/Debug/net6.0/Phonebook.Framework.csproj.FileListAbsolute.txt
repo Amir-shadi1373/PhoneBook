@@ -12,3 +12,17 @@ C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\P
 C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\ref\Phonebook.Framework.dll
 C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Framework\bin\Debug\net6.0\Phonebook.Framework.runtimeconfig.json
 C:\Users\Amir\Desktop\Phonebook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\Phonebook.Framework.genruntimeconfig.cache
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\bin\Debug\net6.0\Phonebook.Framework.deps.json
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\bin\Debug\net6.0\Phonebook.Framework.runtimeconfig.json
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\bin\Debug\net6.0\Phonebook.Framework.dll
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\bin\Debug\net6.0\Phonebook.Framework.pdb
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\Phonebook.Framework.csproj.AssemblyReference.cache
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\Phonebook.Framework.GeneratedMSBuildEditorConfig.editorconfig
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\Phonebook.Framework.AssemblyInfoInputs.cache
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\Phonebook.Framework.AssemblyInfo.cs
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\Phonebook.Framework.csproj.CoreCompileInputs.cache
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\Phonebook.Framework.dll
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\refint\Phonebook.Framework.dll
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\Phonebook.Framework.pdb
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\Phonebook.Framework.genruntimeconfig.cache
+K:\Projects\PhoneBook\Phonebook\Phonebook.Framework\obj\Debug\net6.0\ref\Phonebook.Framework.dll
